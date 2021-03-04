@@ -64,17 +64,20 @@
 // console.log(newUser.phoneNumber)
 // console.log(newUser1.ssn)
 
-// class User {
-//   constructor (name, email, username, password, address, phone) {
-//     this.name = name
-//     this.email = email
-//     this.username = username
-//     this.password = password
-//     this.address = address
-//     this.phone = phone
-//   }
-// }
+class User {
+  constructor (name, email, username, password, address, phone) {
+    this.name = name
+    this.email = email
+    this.username = username
+    this.password = password
+    this.address = address
+    this.phone = phone
+    this.printUser = function () {
+      console.log(this.name)
+    }
+  }
+}
 
-// let newUser = new User('John Doe', 'johndoe@gmail.com', 'johndoe', 'password1234', '123 Main St', '(123) 456-7890')
+let newUser = new User('John Doe', 'johndoe@gmail.com', 'johndoe', 'password1234', '123 Main St', '(123) 456-7890')
 
-// console.log(newUser)
+console.log(newUser.printUser())
