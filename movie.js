@@ -1,18 +1,18 @@
-const fs = require('fs')
-const axios = require('axios')
-const inquirer = require('inquirer')
+const { writeFile } = require('fs')
+const { get } = require('axios')
+const { prompt } = require('inquirer')
 
-inquirer.prompt([
+prompt([
   {
     type: 'input',
     name: 'title',
     message: 'Enter the title of a movie:'
   }
 ])
-  .then(res => {
-    axios.get(`http://www.omdbapi.com/?apikey=trilogy&t=${res.title}`)
-      .then(resp => {
-        fs.writeFile('movie.json', JSON.stringify(resp.data), err => {
+  .then(({ title }) => {
+    get(`http://www.omdbapi.com/?apikey=trilogy&t=${title}`)
+      .then(({ data: movie }) => {
+        writeFile('movie.json', JSON.stringify(movie), err => {
           if (err) { console.log(err) }
         })
       })
